@@ -1,0 +1,38 @@
+<ul class="ui-listview" data-role="listview">
+  <li class="ui-li ui-li-divider ui-bar-a" data-role="divider" role="heading">Averages</li>
+  <li class="ui-li">
+	<div class='ui-grid-b'>
+	  <div class='ui-block-a' style="text-align:right;">Overall</div>
+	  <div class='ui-block-b' style="text-align:center;"><b><%= @overall_average %></b></div>
+	  <div class='ui-block-b'><%= @overall_count %> tests</div>
+	</div>
+  </li>
+  <li class="ui-li">
+	<div class='ui-grid-b'>
+	  <div class='ui-block-a' style="text-align:right;">Breakfast</div>
+	  <div class='ui-block-b' style="text-align:center;"><b><%= @breakfast_average %></b></div>
+	  <div class='ui-block-b'><%= @breakfast_count %> tests</div>
+	</div>
+  </li>
+  <li class="ui-li">
+	<div class='ui-grid-b'>
+	  <div class='ui-block-a' style="text-align:right;">Lunch</div>
+	  <div class='ui-block-b' style="text-align:center;"><b><%= @lunch_average %></b></div>
+	  <div class='ui-block-b'><%= @lunch_count %> tests</div>
+	</div>
+  </li>
+  <li class="ui-li">
+	<div class='ui-grid-b'>
+	  <div class='ui-block-a' style="text-align:right;">Dinner</div>
+	  <div class='ui-block-b' style="text-align:center;"><b><%= @dinner_average %></b></div>
+	  <div class='ui-block-b'><%= @dinner_count %> tests</div>
+	</div>
+  </li>
+  <li class="ui-li">
+	<div class='ui-grid-b'>
+	  <div class='ui-block-a' style="text-align:right;">Bedtime</div>
+	  <div class='ui-block-b' style="text-align:center;"><b><%= @bedtime_average %></b></div>
+	  <div class='ui-block-b'><%= @bedtime_count %> tests</div>
+	</div>
+  </li>
+</ul>
