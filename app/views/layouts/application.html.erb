@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html class="ui-mobile">
+<html lang="en-US" class="ui-mobile">
 <head>
-  <title>Sugar</title>
+  <meta name="Content-Language" content="en-US">
+  <meta name="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Content-Script-Type" content="text/javascript">
+  <meta name="Subject" content="Blood Sugar">
+  <meta name="Language" content="en-US">
+  <meta name="Robots" content="All">
+  <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0;user-scalable=0;" />
+  <meta name="apple-mobile-web-app-capable" content="YES">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>Sugar is sweet</title>
+
+  <link rel="apple-touch-icon" href="<%= image_path("apple-touch-icon.png") %>" title="Sugar" />
+
   <%= stylesheet_link_tag :all %>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
-  <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>
-  <%= javascript_include_tag "application", "jquery_ujs", "highcharts" %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
+
 <body class="ui-mobile-viewport">
-<%= yield %>
+  <%= yield %>
   </div>
-<%= yield :javascript %>
+
+  <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>
+  <%= javascript_include_tag "application", "jquery_ujs", "highcharts" %>
+  <%= yield :javascript %>
 </body>
 </html>
