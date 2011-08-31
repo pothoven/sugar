@@ -1,0 +1,67 @@
+<div class="ui-page" data-role="page">
+  <div class="ui-header" data-role="header">
+	<h1 class="ui-title">Test Results</h1>
+	<%= link_to 'Home', '/', "data-icon" => "home", "class" => "ui-btn-left", "data-direction" => "reverse" %>
+	<%= link_to 'Add', new_blood_test_path, "data-icon" => "plus", "class" => "ui-btn-right" %>
+  </div>
+  
+  <div class="ui-content" data-role="content" data-theme="c">
+	<div class="content-primary">
+	  <ul class="ui-listview" data-role="listview">
+		<li class="ui-li ui-li-divider ui-bar-a" data-role="divider" role="heading">Averages</li>
+		<li class="ui-li">
+		  <div class='ui-grid-b'>
+			<div class='ui-block-a' style="text-align:right;">Overall</div>
+			<div class='ui-block-b' style="text-align:center;"><b><%= @overall_average %></b></div>
+			<div class='ui-block-b'><%= @overall_count %> tests</div>
+		  </div>
+		</li>
+		<li class="ui-li">
+		  <div class='ui-grid-b'>
+			<div class='ui-block-a' style="text-align:right;">Breakfast</div>
+			<div class='ui-block-b' style="text-align:center;"><b><%= @breakfast_average %></b></div>
+			<div class='ui-block-b'><%= @breakfast_count %> tests</div>
+		  </div>
+		</li>
+		<li class="ui-li">
+		  <div class='ui-grid-b'>
+			<div class='ui-block-a' style="text-align:right;">Lunch</div>
+			<div class='ui-block-b' style="text-align:center;"><b><%= @lunch_average %></b></div>
+			<div class='ui-block-b'><%= @lunch_count %> tests</div>
+		  </div>
+		</li>
+		<li class="ui-li">
+		  <div class='ui-grid-b'>
+			<div class='ui-block-a' style="text-align:right;">Dinner</div>
+			<div class='ui-block-b' style="text-align:center;"><b><%= @dinner_average %></b></div>
+			<div class='ui-block-b'><%= @dinner_count %> tests</div>
+		  </div>
+		</li>
+		<li class="ui-li">
+		  <div class='ui-grid-b'>
+			<div class='ui-block-a' style="text-align:right;">Bedtime</div>
+			<div class='ui-block-b' style="text-align:center;"><b><%= @bedtime_average %></b></div>
+			<div class='ui-block-b'><%= @bedtime_count %> tests</div>
+		  </div>
+		</li>
+		<li class="ui-li ui-li-divider ui-bar-a" data-role="divider" role="heading">Recent Tests</li>
+		<% group_date = "" -%>
+		<% @blood_tests.each do |blood_test| -%>
+		<% if blood_test.test_date != group_date -%>
+		<% group_date = blood_test.test_date -%>
+		<li class="ui-li ui-li-divider ui-bar-c" data-role="divider" role="heading"><%= group_date %></li>
+		<% end -%>
+		
+		<li class="ui-btn ui-btn-icon-right ui-li">
+		  <div class="ui-btn-inner ui-li">
+			<div class="ui-btn-text">
+			  <%= link_to raw("<div class='ui-grid-a'><div class='ui-block-a' style='text-align: right;'>#{blood_test.test_type}</div><div class='ui-block-b' style='text-align:center;'>#{blood_test.result}</div></div>"), edit_blood_test_path(blood_test), :class => "ui-link-inherit" %>
+			</div>
+			<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+		  </div>
+		</li>
+		<% end -%>
+	  </ul>
+	</div>
+  </div>
+</div>

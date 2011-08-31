@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Test date:</b>
+  <%= @blood_test.test_date %>
+</p>
+
+<p>
+  <b>Test type:</b>
+  <%= @blood_test.test_type_id %>
+</p>
+
+<p>
+  <b>Result:</b>
+  <%= @blood_test.result %>
+</p>
+
+
+<%= link_to 'Edit', edit_blood_test_path(@blood_test) %> |
+<%= link_to 'Back', blood_tests_path %>
