@@ -29,6 +29,10 @@
   <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>
   <%= javascript_include_tag "application", "jquery_ujs", "highcharts" %>
+  <!-- Optional Mousewheel support: http://brandonaaron.net/code/mousewheel/docs -->  
+  <%= javascript_include_tag "jquery.mousewheel.min" %>
+  <!-- DataBox: http://dev.jtsage.com/jQM-DateBox/ -->
+  <%= javascript_include_tag "jquery.mobile.datebox.min" %>
   <%= yield :javascript %>
 </body>
 </html>

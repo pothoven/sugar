@@ -10,6 +10,16 @@
 	  <%= render :partial => "averages" %>
 	  <ul class="ui-listview" data-role="listview">
 		<li class="ui-li ui-li-divider ui-bar-a" data-role="divider" role="heading">Recent Tests</li>
+        <!-- OPTION: combine tests into single rows 
+		<li class="ui-li ui-li-divider ui-bar-a" data-role="divider" role="heading">
+		  <div class="ui-grid-c">
+			<div class="ui-block-a">breakfast</div>
+			<div class="ui-block-b">lunch</div>
+			<div class="ui-block-c">dinner</div>
+			<div class="ui-block-c">bedtime</div>
+		  </div>
+		</li>
+		-->
 		<% group_date = "" -%>
 		<% @blood_tests.each do |blood_test| -%>
 		<% if blood_test.test_date != group_date -%>

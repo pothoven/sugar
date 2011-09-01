@@ -1,3 +1,7 @@
+<%= content_for :head do -%>
+<%= stylesheet_link_tag 'jquery.mobile.datebox.min' %>
+<% end -%>
+
 <%= form_for(@blood_test) do |f| %>
   <% if @blood_test.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +17,7 @@
 
   <div class="field">
     <%= f.label :test_date %><br />
-    <%= f.date_select :test_date %>
+    <%= f.text_field :test_date, "type" => "date", "data-role" => "datebox", "data-options" => '{"mode": "flipbox"}', "data-theme" => "a" %>
   </div>
   <div class="field">
     <%= f.label :test_type_id %><br />
