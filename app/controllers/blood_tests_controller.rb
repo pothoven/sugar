@@ -30,17 +30,6 @@ class BloodTestsController < ApplicationController
     end
   end
 
-  # GET /blood_tests/1
-  # GET /blood_tests/1.xml
-  def show
-    @blood_test = BloodTest.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @blood_test }
-    end
-  end
-
   # GET /blood_tests/new
   # GET /blood_tests/new.xml
   def new
@@ -64,7 +53,7 @@ class BloodTestsController < ApplicationController
 
     respond_to do |format|
       if @blood_test.save
-        format.html { redirect_to(@blood_test, :notice => 'Blood test was successfully created.') }
+        format.html { redirect_to(blood_tests_path, :notice => 'Blood test was successfully created.') }
         format.xml  { render :xml => @blood_test, :status => :created, :location => @blood_test }
       else
         format.html { render :action => "new" }
@@ -80,7 +69,7 @@ class BloodTestsController < ApplicationController
 
     respond_to do |format|
       if @blood_test.update_attributes(params[:blood_test])
-        format.html { redirect_to(@blood_test, :notice => 'Blood test was successfully updated.') }
+        format.html { redirect_to(blood_tests_path, :notice => 'Blood test was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
