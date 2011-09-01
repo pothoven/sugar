@@ -1,16 +1,15 @@
-<div class="ui-page" data-role="page">
-  <div class="ui-header" data-role="header">
-	<h1 class="ui-title">Blood Sugar</h1>
+<div data-role="page">
+  <div data-role="header">
+	<h1 >Blood Sugar</h1>
 	<a href="/blood_tests/new" data-icon="plus" class="ui-btn-right">Add</a>
   </div>
   
-  <div class="ui-content" data-role="content" data-theme="c">
-	<div class="content-primary">
-	  <ul class="ui-listview" data-role="listview">
+  <div data-role="content" data-theme="c">
+	  <ul data-role="listview">
 		<li class="ui-btn ui-btn-icon-right ui-li">
 		  <div class="ui-btn-inner ui-li">
 			<div class="ui-btn-text">
-			  <a href="/blood_tests" class="ui-link-inherit">Test Results</a>
+			  <a href="/blood_tests" class="ui-link-inherit"><h3>Test Results</h3></a>
 			</div>
 			<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
 		  </div>
@@ -18,13 +17,16 @@
 		<li class="ui-btn ui-btn-icon-right ui-li">
 		  <div class="ui-btn-inner ui-li">
 			<div class="ui-btn-text">
-			  <a href="/charts" class="ui-link-inherit">Charts</a>
+			  <a href="/charts" class="ui-link-inherit"><h3>Charts</h3></a>
 			</div>
 			<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
 		  </div>
 		</li>
 	  </ul>
-	</div>
+	  <br style="clear: both;" />
+      <div>
+		<a href="/blood_tests/new" data-role="button" data-icon="plus" data-theme="b" >Add Test Result</a>
+	  </div>
   </div>
-  
+
 </div>

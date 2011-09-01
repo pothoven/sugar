@@ -10,8 +10,8 @@ class ChartsController < ApplicationController
 
   def show
     test_types = params[:chart][:test_type]
-    duration  = params[:chart][:duration].to_i if params[:chart][:duration].present?
-    @chart_data = Chart.collect_data_for_test_types(test_types, duration)
+    @duration  = params[:chart][:duration].to_i if params[:chart][:duration].present?
+    @chart_data = Chart.collect_data_for_test_types(test_types, @duration)
 
     respond_to do |format|
       format.html # show.html.erb

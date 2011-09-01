@@ -1,42 +1,55 @@
-<div class="ui-page" data-role="page">
-  <div class="ui-header" data-role="header">
-	<h1 class="ui-title">Test Results</h1>
+<div data-role="page">
+  <div data-role="header">
+	<h1>Test Results</h1>
 	<%= link_to 'Home', '/', "data-icon" => "home", "class" => "ui-btn-left", "data-direction" => "reverse" %>
 	<%= link_to 'Add', new_blood_test_path, "data-icon" => "plus", "class" => "ui-btn-right" %>
   </div>
   
-  <div class="ui-content" data-role="content" data-theme="c">
-	<div class="content-primary">
+  <div data-role="content" data-theme="d">
 	  <%= render :partial => "averages" %>
-	  <ul class="ui-listview" data-role="listview">
-		<li class="ui-li ui-li-divider ui-bar-a" data-role="divider" role="heading">Recent Tests</li>
-        <!-- OPTION: combine tests into single rows 
-		<li class="ui-li ui-li-divider ui-bar-a" data-role="divider" role="heading">
-		  <div class="ui-grid-c">
-			<div class="ui-block-a">breakfast</div>
-			<div class="ui-block-b">lunch</div>
-			<div class="ui-block-c">dinner</div>
-			<div class="ui-block-c">bedtime</div>
+	  <ul data-role="listview">
+		<li data-role="divider" role="heading" data-theme="a">Recent Tests</li>
+		<li data-role="divider" role="heading" data-theme="b">
+		  <div class="ui-grid-d">
+			<div class="ui-block-a" style="text-align: left;">date</div>
+			<div class="ui-block-b" style="text-align: center;">breakfast</div>
+			<div class="ui-block-c" style="text-align: center;">lunch</div>
+			<div class="ui-block-d" style="text-align: center;">dinner</div>
+			<div class="ui-block-e" style="text-align: center;">bedtime</div>
 		  </div>
 		</li>
-		-->
-		<% group_date = "" -%>
-		<% @blood_tests.each do |blood_test| -%>
-		<% if blood_test.test_date != group_date -%>
-		<% group_date = blood_test.test_date -%>
-		<li class="ui-li ui-li-divider ui-bar-c" data-role="divider" role="heading"><%= group_date %></li>
-		<% end -%>
-		
-		<li class="ui-btn ui-btn-icon-right ui-li">
-		  <div class="ui-btn-inner ui-li">
-			<div class="ui-btn-text">
-			  <%= link_to raw("<div class='ui-grid-a'><div class='ui-block-a' style='text-align: right;'>#{blood_test.test_type}</div><div class='ui-block-b' style='text-align:center;'>#{blood_test.result}</div></div>"), edit_blood_test_path(blood_test), :class => "ui-link-inherit" %>
-			</div>
-			<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
-		  </div>
+
+		<% @blood_tests.group_by(&:test_date).sort.reverse.each do |test_date, blood_tests| -%>
+		<li data-theme="d">
+		  <div class="ui-grid-d">
+			<div class="ui-block-a" style="text-align: left;"><%= "#{test_date.month}/#{test_date.day}" %></div>
+			<div class="ui-block-b" style="text-align: center;">
+			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 1 }.first -%>
+			  <% if blood_test.present? -%>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog" %>
+			  <% end -%>
+            </div>
+			<div class="ui-block-c" style="text-align: center;">
+			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 2 }.first -%>
+			  <% if blood_test.present? -%>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog"  %>
+			  <% end -%>
+            </div>
+			<div class="ui-block-d" style="text-align: center;">
+			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 3 }.first -%>
+			  <% if blood_test.present? -%>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog"  %>
+			  <% end -%>
+            </div>
+			<div class="ui-block-e" style="text-align: center;">
+			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 4 }.first -%>
+			  <% if blood_test.present? -%>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog"  %>
+			  <% end -%>
+            </div>
+	      </div>
 		</li>
 		<% end -%>
 	  </ul>
-	</div>
   </div>
 </div>

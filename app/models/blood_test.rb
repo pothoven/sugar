@@ -4,6 +4,8 @@ class BloodTest < ActiveRecord::Base
 
   validates_uniqueness_of :test_date, :scope => [:test_type_id]
   validates_presence_of :result
+  validates_presence_of :test_date
+  validates_presence_of :test_type_id
 
   default_scope order(:test_date, :test_type_id)
 

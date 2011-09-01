@@ -8,7 +8,7 @@
   <meta name="Language" content="en-US">
   <meta name="Robots" content="All">
 
-  <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0;user-scalable=0;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <meta name="apple-mobile-web-app-capable" content="YES">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -22,9 +22,8 @@
   <%= yield :head %>
 </head>
 
-<body class="ui-mobile-viewport">
+<body>
   <%= yield %>
-  </div>
 
   <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>

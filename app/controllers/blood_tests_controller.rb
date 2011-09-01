@@ -2,7 +2,7 @@ class BloodTestsController < ApplicationController
   # GET /blood_tests
   # GET /blood_tests.xml
   def index
-    @blood_tests = BloodTest.recent
+    @blood_tests = BloodTest.all
 
     overall_tests = BloodTest.all
     @overall_count = overall_tests.length
@@ -53,7 +53,7 @@ class BloodTestsController < ApplicationController
 
     respond_to do |format|
       if @blood_test.save
-        format.html { redirect_to(blood_tests_path, :notice => 'Blood test was successfully created.') }
+        format.html { redirect_to(blood_tests_url, :notice => 'Blood test was successfully created.') }
         format.xml  { render :xml => @blood_test, :status => :created, :location => @blood_test }
       else
         format.html { render :action => "new" }
@@ -69,7 +69,7 @@ class BloodTestsController < ApplicationController
 
     respond_to do |format|
       if @blood_test.update_attributes(params[:blood_test])
-        format.html { redirect_to(blood_tests_path, :notice => 'Blood test was successfully updated.') }
+        format.html { redirect_to(blood_tests_url, :notice => 'Blood test was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -89,4 +89,8 @@ class BloodTestsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def show
+  end
+
 end

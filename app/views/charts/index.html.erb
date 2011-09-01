@@ -1,33 +1,33 @@
-<div class="ui-page" data-role="page">
-  <div class="ui-header" data-role="header">
-	<h1 class="ui-title">Charts</h1>
+<div data-role="page">
+  <div data-role="header">
+	<h1>Charts</h1>
 	<%= link_to 'Home', '/', "data-icon" => "home", "class" => "ui-btn-left", "data-direction" => "reverse" %>
   </div>
   
-  <div class="ui-content ui-body" data-role="content" data-theme="c" >
-	<div class="content-primary">
-	  <form action="/charts/show" method="get" data-ajax="false">
-		<fieldset>
-		  <label for="slider">Select test types:</label>
-		  <div class="ui-field-contain ui-grid-a" data-role="fieldcontain">
-			<% @test_types.each do |test_type| -%>
-			<label class="ui-block-a" for="test_type_<%= test_type.id %>" id="test_type_<%= test_type.id %>}-label"><%= test_type.name %></label>
-			<select name="chart[test_type][<%= test_type.name %>]" id="test_type_<%= test_type.id %>" data-role="slider" data-theme="a" class="ui-block-b" >
-			  <option value="off">Off</option>
-			  <option value="on" selected="true">On</option>
-			</select> 
-			<% end -%>
-		  </div>
-		  
-		  <div data-role="fieldcontain">
-			<label for="slider">Weeks:</label>
- 			<input type="range" name="chart[duration]" id="chart[duration]" value="3" min="1" max="16"  />
-		  </div>
+  <div data-role="content" data-theme="c" >
+	<form action="/charts/show" method="get" data-ajax="false">
+	  <fieldset>
+		<h4>Select test types:</h4>
+		<div class="ui-grid-a" data-role="fieldcontain">
+		  <% @test_types.each do |test_type| -%>
+		  <label class="ui-block-a" for="test_type_<%= test_type.id %>" id="test_type_<%= test_type.id %>}-label"><%= test_type.name %></label>
+		  <select name="chart[test_type][<%= test_type.name %>]" id="test_type_<%= test_type.id %>" data-role="slider" data-theme="a" class="ui-block-b" >
+			<option value="off">Off</option>
+			<option value="on" selected="true">On</option>
+		  </select> 
+		  <% end -%>
+		</div>
+		
+		<div data-role="fieldcontain">
+		  <label for="slider">Weeks:</label>
+ 		  <input type="range" name="chart[duration]" id="chart[duration]" value="4" min="1" max="16"  />
+		</div>
+	  </fieldset>
+		
+		<div data-role="fieldcontain">
+		  <button class="ui-btn-hidden" value="submit-value" name="submit" data-icon="forward" data-iconpos="right" data-theme="a" type="submit" aria-disabled="false">Submit</button>
+		</div>
 
-		  <button class="ui-btn-hidden" value="submit-value" name="submit" data-theme="a" type="submit" aria-disabled="false">Submit</button>
-		  
-		</fieldset>
-	  </form>
-	</div>
+	</form>
   </div>
 </div>

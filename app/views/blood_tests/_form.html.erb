@@ -5,9 +5,7 @@
 <%= form_for(@blood_test) do |f| %>
   <% if @blood_test.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@blood_test.errors.count, "error") %> prohibited this blood_test from being saved:</h2>
-
-      <ul>
+      <ul data-role="listview">
       <% @blood_test.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -15,19 +13,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :test_date %><br />
+  <div data-role="fieldcontain">
+    <%= f.label :test_date, :style => "text-align: right; vertical-align: middle;" %>
     <%= f.text_field :test_date, "type" => "date", "data-role" => "datebox", "data-options" => '{"mode": "flipbox"}', "data-theme" => "a" %>
   </div>
-  <div class="field">
-    <%= f.label :test_type_id %><br />
+  <div data-role="fieldcontain">
+    <%= f.label :test_type_id, :style => "text-align: right; vertical-align: middle;"  %>
     <%= f.select :test_type_id, TestType.for_select %>
   </div>
-  <div class="field">
-    <%= f.label :result %><br />
+  <div data-role="fieldcontain">
+    <%= f.label :result, :style => "text-align: right; vertical-align: middle;"  %>
     <%= f.text_field :result %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div data-role="fieldcontain" class="actions">
+	<% unless @blood_test.new_record? -%>
+	<div class="ui-grid-a">
+	  <div class="ui-block-a">
+		<% end -%>
+		<%= f.submit "data-icon" => "check", "data-theme" => "b" %>
+		<% unless @blood_test.new_record? -%>
+	  </div>
+	  <div class="ui-block-b">
+		<%= link_to "Delete", {:action=>"destroy", :controller=>"blood_tests", :id => @blood_test.id}, :method => "delete", "data-role" =>"button", "data-icon" => "delete" %>
+	  </div>
+	</div>
+	<% end -%>
   </div>
 <% end %>
