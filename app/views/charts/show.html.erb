@@ -55,6 +55,9 @@ $(document).ready(function() {
          y: 10,
          borderWidth: 0
       },
+      credits: {
+        enabled: false
+      },
       series: [
       <% @chart_data.each do |chart| -%>
       {
@@ -63,11 +66,8 @@ $(document).ready(function() {
          pointInterval: 24 * 3600 * 1000 // one day
       }, 
 	  <% end -%>
-	  credits: {
-	     enabled: false
-	  }
 	  ]
-   });
+	  });
    
    
 });
