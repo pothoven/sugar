@@ -4,25 +4,29 @@ class BloodTestsController < ApplicationController
   def index
     @blood_tests = BloodTest.all
 
-    overall_tests = BloodTest.all
+    overall_tests = @blood_tests
     @overall_count = overall_tests.length
     @overall_average = (overall_tests.collect(&:result).sum.to_f/@overall_count).round if @overall_count > 0
 
-    breakfast_tests = BloodTest.breakfast
-    @breakfast_count = breakfast_tests.length
-    @breakfast_average = (breakfast_tests.collect(&:result).sum.to_f/@breakfast_count).round if @breakfast_count > 0
+	@blood_tests.group_by(&:test_type_id).each do | test_type_id, blood_test_group |
+	  test_count = blood_test_group.length
+      test_average = (blood_test_group.collect(&:result).sum.to_f/test_count).round if test_count > 0
 
-    lunch_tests = BloodTest.lunch
-    @lunch_count = lunch_tests.length
-    @lunch_average = (lunch_tests.collect(&:result).sum.to_f/@lunch_count).round if @lunch_count > 0
-
-    dinner_tests = BloodTest.dinner
-    @dinner_count = dinner_tests.length
-    @dinner_average = (dinner_tests.collect(&:result).sum.to_f/@dinner_count).round if @dinner_count > 0
-
-    bedtime_tests = BloodTest.bedtime
-    @bedtime_count = bedtime_tests.length
-    @bedtime_average = (bedtime_tests.collect(&:result).sum.to_f/@bedtime_count).round if @bedtime_count > 0
+	  case test_type_id
+	  when 1
+	    @breakfast_count = test_count
+		@breakfast_average = test_average
+	  when 2			  
+	    @lunch_count = test_count
+		@lunch_average = test_average
+	  when 3
+	    @dinner_count = test_count
+		@dinner_average = test_average
+	  when 4
+	    @bedtime_count = test_count
+		@bedtime_average = test_average
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
