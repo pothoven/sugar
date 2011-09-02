@@ -3,6 +3,22 @@
 <% end -%>
 
 <%= form_for(@blood_test) do |f| %>
+
+  <div data-role="fieldcontain" class="actions">
+	<% unless @blood_test.new_record? -%>
+	<div class="ui-grid-a">
+	  <div class="ui-block-a">
+		<% end -%>
+		<%= f.submit "data-icon" => "check", "data-theme" => "b" %>
+		<% unless @blood_test.new_record? -%>
+	  </div>
+	  <div class="ui-block-b">
+		<%= link_to "Delete", {:action=>"destroy", :controller=>"blood_tests", :id => @blood_test.id}, :method => "delete", "data-role" =>"button", "data-icon" => "delete" %>
+	  </div>
+	</div>
+	<% end -%>
+  </div>
+
   <% if @blood_test.errors.any? %>
     <div id="error_explanation">
       <ul data-role="listview">
@@ -31,18 +47,4 @@
 	<%= f.text_area :note %>
   </div>
 
-  <div data-role="fieldcontain" class="actions">
-	<% unless @blood_test.new_record? -%>
-	<div class="ui-grid-a">
-	  <div class="ui-block-a">
-		<% end -%>
-		<%= f.submit "data-icon" => "check", "data-theme" => "b" %>
-		<% unless @blood_test.new_record? -%>
-	  </div>
-	  <div class="ui-block-b">
-		<%= link_to "Delete", {:action=>"destroy", :controller=>"blood_tests", :id => @blood_test.id}, :method => "delete", "data-role" =>"button", "data-icon" => "delete" %>
-	  </div>
-	</div>
-	<% end -%>
-  </div>
 <% end %>
