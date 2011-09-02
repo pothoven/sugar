@@ -23,8 +23,14 @@
   </div>
   <div data-role="fieldcontain">
     <%= f.label :result, :style => "text-align: right; vertical-align: middle;"  %>
-    <%= f.text_field :result %>
+    <%= f.text_field :result, "type" => "number" %>
   </div>
+
+  <div data-role="fieldcontain">
+	<%= f.label :note, :style => "text-align: right; vertical-align: top;"  %>
+	<%= f.text_area :note %>
+  </div>
+
   <div data-role="fieldcontain" class="actions">
 	<% unless @blood_test.new_record? -%>
 	<div class="ui-grid-a">

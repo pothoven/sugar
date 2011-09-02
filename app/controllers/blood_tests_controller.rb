@@ -38,6 +38,7 @@ class BloodTestsController < ApplicationController
   # GET /blood_tests/new.xml
   def new
     @blood_test = BloodTest.new
+	@blood_test.test_date = Date.today
 
     respond_to do |format|
       format.html # new.html.erb
