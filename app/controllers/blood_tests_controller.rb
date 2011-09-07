@@ -2,18 +2,18 @@ class BloodTestsController < ApplicationController
   # GET /blood_tests
   # GET /blood_tests.xml
   def index
-    @blood_tests = BloodTest.all
+    @blood_tests = BloodTest.recent
 
-    @overall_count = BloodTest.count
-    @overall_average = BloodTest.average(:result).round.to_i
-    @breakfast_count = BloodTest.breakfast.count
-    @breakfast_average = BloodTest.breakfast.average(:result).round.to_i
-    @lunch_count = BloodTest.lunch.count
-    @lunch_average = BloodTest.lunch.average(:result).round.to_i
-    @dinner_count = BloodTest.dinner.count
-    @dinner_average = BloodTest.dinner.average(:result).round.to_i
-    @bedtime_count = BloodTest.bedtime.count
-    @bedtime_average = BloodTest.bedtime.average(:result).round.to_i
+    @overall_count = BloodTest.recent.count
+    @overall_average = BloodTest.recent.average(:result).round.to_i
+    @breakfast_count = BloodTest.recent.breakfast.count
+    @breakfast_average = BloodTest.recent.breakfast.average(:result).round.to_i
+    @lunch_count = BloodTest.recent.lunch.count
+    @lunch_average = BloodTest.recent.lunch.average(:result).round.to_i
+    @dinner_count = BloodTest.recent.dinner.count
+    @dinner_average = BloodTest.recent.dinner.average(:result).round.to_i
+    @bedtime_count = BloodTest.recent.bedtime.count
+    @bedtime_average = BloodTest.recent.bedtime.average(:result).round.to_i
 
 =begin
     # the following block of code will compute all the averages
