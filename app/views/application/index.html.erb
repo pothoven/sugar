@@ -24,7 +24,7 @@
   </div>
 
   <div data-role="footer">
-	<p style="text-align: center;">Average Glucose: <%= BloodTest.average(:result).to_i %> mg/dl (A1C: <%= ((BloodTest.average(:result) + 46.7) / 28.7).round(2) %>)</p>
+	<p style="text-align: center;">Average Glucose: <%= BloodTest.recent.average(:result).to_i %> mg/dl (A1C: <%= ((BloodTest.recent.average(:result) + 46.7) / 28.7).round(2) %>)</p>
   </div>
   
 </div>

@@ -15,7 +15,7 @@ class BloodTest < ActiveRecord::Base
   scope :bedtime, joins(:test_type).where("test_types.name = 'bedtime'")
   scope :test_type, lambda { |*args| { :conditions => "test_type_id = #{TestType[args.first].id}" } }
 
-  scope :recent, lambda { |*args| {:conditions => ["test_date > ?", (args.first || 1.week.ago)] } }
+  scope :recent, lambda { |*args| {:conditions => ["test_date > ?", (args.first || 3.months.ago)] } }
 
 
 end
