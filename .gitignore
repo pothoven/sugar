@@ -11,4 +11,4 @@ db/schema.rb
 db/*.sqlite3
 .idea/*
 *.esproj/**/*
-
+public/images/prospects

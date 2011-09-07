@@ -1,11 +1,13 @@
 <div data-role="page" data-add-back-btn="true" >
   <div data-role="header">
+	<br style="clear: both;" />	
 	<h1>Past <%= pluralize @duration, "week" %></h1>
 	<%= link_to 'Back', '/', "data-icon" => "back", "class" => "ui-btn-left", "data-rel" => "back", "data-direction" => "reverse" %>
   </div>
   
   <div data-role="content" data-theme="a" style="padding: 5px;" >
 	<div id="container" style="width: 100%;"> </div>
+	<br style="clear: both;" />	
   </div>
 </div>
 

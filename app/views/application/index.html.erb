@@ -1,32 +1,27 @@
 <div data-role="page">
   <div data-role="header">
+	<br style="clear: both;" />	
 	<h1 >Blood Sugar</h1>
 	<a href="/blood_tests/new" data-icon="plus" class="ui-btn-right">Add</a>
   </div>
   
   <div data-role="content" data-theme="c">
-	  <ul data-role="listview">
-		<li class="ui-btn ui-btn-icon-right ui-li">
-		  <div class="ui-btn-inner ui-li">
-			<div class="ui-btn-text">
-			  <a href="/blood_tests" class="ui-link-inherit"><h3>Test Results</h3></a>
-			</div>
-			<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
-		  </div>
-		</li>
-		<li class="ui-btn ui-btn-icon-right ui-li">
-		  <div class="ui-btn-inner ui-li">
-			<div class="ui-btn-text">
-			  <a href="/charts" class="ui-link-inherit"><h3>Charts</h3></a>
-			</div>
-			<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
-		  </div>
-		</li>
-	  </ul>
-	  <br style="clear: both;" />
-      <div>
-		<a href="/blood_tests/new" data-role="button" data-icon="plus" data-theme="b" >Add Test Result</a>
+	<div class="ui-grid-a">
+	  <div class="ui-block-a icon-button">
+		<%= link_to image_tag("tests.png", :height => 96), blood_tests_path, "data-role" => "none", :class => "icon" %>
+		<div>Test Results</div>
 	  </div>
+	  <div class="ui-block-b icon-button">
+		<%= link_to image_tag("charts.png", :height => 96), charts_path, "data-role" => "none", :class => "icon" %>
+		<div>Charts</div>
+	  </div>
+	</div><!-- /grid-a -->
+	<br style="clear: both;" />
+    <div class="icon-button">
+	  <%= link_to image_tag("blood_test.png", :height => 96), new_blood_test_path, "data-role" => "none", :class => "icon" %>
+	  <div>New Blood Test</div>
+	</div>
+	<br style="clear: both;" />	
   </div>
-
+  
 </div>

@@ -54,3 +54,27 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+div.icon-button {
+	text-align: center;
+}
+
+a.icon:hover {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-o-border-radius: 8px;
+    -khtml-border-radius: 8px;
+	border-radius: 8px;
+	border-color: #white;
+	border-style: solid;
+	background-color: white;
+}
+
+a.icon + div {
+	font-weight: bold;
+	text-align: center;
+}
+
+a.icon:hover + div {
+	color: #4F87B4;
+}

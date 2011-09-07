@@ -1,5 +1,6 @@
 <div data-role="page">
   <div data-role="header">
+	<br style="clear: both;" />	
 	<h1>Test Results</h1>
 	<%= link_to 'Home', '/', "data-icon" => "home", "class" => "ui-btn-left", "data-direction" => "reverse" %>
 	<%= link_to 'Add', new_blood_test_path, "data-icon" => "plus", "class" => "ui-btn-right" %>
@@ -12,10 +13,10 @@
 		<li data-role="divider" role="heading" data-theme="b">
 		  <div class="ui-grid-d">
 			<div class="ui-block-a" style="text-align: left;">date</div>
-			<div class="ui-block-b" style="text-align: center;">breakfast</div>
-			<div class="ui-block-c" style="text-align: center;">lunch</div>
-			<div class="ui-block-d" style="text-align: center;">dinner</div>
-			<div class="ui-block-e" style="text-align: center;">bedtime</div>
+			<div class="ui-block-b" style="text-align: center;"><%= image_tag 'meal.png', :height => 32, :alt => 'breakfast', :title => 'breakfast' %></div>
+			<div class="ui-block-c" style="text-align: center;"><%= image_tag 'meal.png', :height => 32, :alt => 'lunch', :title => 'lunch' %></div>
+			<div class="ui-block-d" style="text-align: center;"><%= image_tag 'meal.png', :height => 32, :alt => 'dinner', :title => 'dinner' %></div>
+			<div class="ui-block-e" style="text-align: center;"><%= image_tag 'bedtime.png', :height => 32, :alt => 'bedtime', :title => 'bedtime' %></div>
 		  </div>
 		</li>
 
@@ -51,5 +52,6 @@
 		</li>
 		<% end -%>
 	  </ul>
+	  <br style="clear: both;" />	
   </div>
 </div>

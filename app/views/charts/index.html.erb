@@ -1,5 +1,6 @@
 <div data-role="page">
   <div data-role="header">
+	<br style="clear: both;" />	
 	<h1>Charts</h1>
 	<%= link_to 'Home', '/', "data-icon" => "home", "class" => "ui-btn-left", "data-direction" => "reverse" %>
   </div>
@@ -10,7 +11,7 @@
 		<!-- <h4>Select test types:</h4> -->
 		<div class="ui-grid-a" data-role="fieldcontain">
 		  <% @test_types.each do |test_type| -%>
-		  <label class="ui-block-a" for="test_type_<%= test_type.id %>" id="test_type_<%= test_type.id %>}-label"><%= test_type.name %></label>
+		  <label class="ui-block-a" style="text-align: right; padding-top: 8px;" for="test_type_<%= test_type.id %>" id="test_type_<%= test_type.id %>}-label"><%= test_type.name %></label>
 		  <select name="chart[test_type][<%= test_type.name %>]" id="test_type_<%= test_type.id %>" data-role="slider" data-theme="a" class="ui-block-b" >
 			<option value="off">Off</option>
 			<option value="on" selected="true">On</option>
@@ -25,9 +26,11 @@
 	  </fieldset>
 		
 		<div data-role="fieldcontain">
-		  <button class="ui-btn-hidden" value="submit-value" name="submit" data-icon="forward" data-iconpos="right" data-theme="a" type="submit" aria-disabled="false">Submit</button>
+		  <button class="ui-btn-hidden" value="submit-value" name="submit" data-icon="forward" data-iconpos="right" data-theme="a" type="submit" aria-disabled="false">View Chart</button>
 		</div>
 
 	</form>
+	<br style="clear: both;" />	
+
   </div>
 </div>
