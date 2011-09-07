@@ -78,3 +78,7 @@ a.icon + div {
 a.icon:hover + div {
 	color: #4F87B4;
 }
+
+.result-high {
+	color: red !important;
+}

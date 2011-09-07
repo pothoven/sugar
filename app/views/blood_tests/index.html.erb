@@ -27,25 +27,25 @@
 			<div class="ui-block-b" style="text-align: center;">
 			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 1 }.first -%>
 			  <% if blood_test.present? -%>
-			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog" %>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit #{'result-high' if blood_test.result >= 240}", "data-rel" => "dialog" %>
 			  <% end -%>
             </div>
 			<div class="ui-block-c" style="text-align: center;">
 			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 2 }.first -%>
 			  <% if blood_test.present? -%>
-			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog"  %>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit #{'result-high' if blood_test.result >= 240}", "data-rel" => "dialog"  %>
 			  <% end -%>
             </div>
 			<div class="ui-block-d" style="text-align: center;">
 			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 3 }.first -%>
 			  <% if blood_test.present? -%>
-			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog"  %>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit #{'result-high' if blood_test.result >= 240}", "data-rel" => "dialog"  %>
 			  <% end -%>
             </div>
 			<div class="ui-block-e" style="text-align: center;">
 			  <% blood_test = blood_tests.select{ |blood_test| blood_test.test_type_id == 4 }.first -%>
 			  <% if blood_test.present? -%>
-			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit", "data-rel" => "dialog"  %>
+			  <%= link_to "#{blood_test.result}", edit_blood_test_path(blood_test), :class => "ui-link-inherit #{'result-high' if blood_test.result >= 240}", "data-rel" => "dialog"  %>
 			  <% end -%>
             </div>
 	      </div>
