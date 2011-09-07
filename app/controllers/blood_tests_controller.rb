@@ -4,30 +4,47 @@ class BloodTestsController < ApplicationController
   def index
     @blood_tests = BloodTest.all
 
+    @overall_count = BloodTest.count
+    @overall_average = BloodTest.average(:result).round.to_i
+    @breakfast_count = BloodTest.breakfast.count
+    @breakfast_average = BloodTest.breakfast.average(:result).round.to_i
+    @lunch_count = BloodTest.lunch.count
+    @lunch_average = BloodTest.lunch.average(:result).round.to_i
+    @dinner_count = BloodTest.dinner.count
+    @dinner_average = BloodTest.dinner.average(:result).round.to_i
+    @bedtime_count = BloodTest.bedtime.count
+    @bedtime_average = BloodTest.bedtime.average(:result).round.to_i
+
+=begin
+    # the following block of code will compute all the averages
+    # manually using the initial 'select all' query rather than the
+    # ActiveRecord calculation functions which may require multiple
+    # additional queries
+
     overall_tests = @blood_tests
     @overall_count = overall_tests.length
     @overall_average = (overall_tests.collect(&:result).sum.to_f/@overall_count).round if @overall_count > 0
 
-	@blood_tests.group_by(&:test_type_id).each do | test_type_id, blood_test_group |
-	  test_count = blood_test_group.length
+  @blood_tests.group_by(&:test_type_id).each do | test_type_id, blood_test_group |
+    test_count = blood_test_group.length
       test_average = (blood_test_group.collect(&:result).sum.to_f/test_count).round if test_count > 0
 
-	  case test_type_id
-	  when 1
-	    @breakfast_count = test_count
-		@breakfast_average = test_average
-	  when 2			  
-	    @lunch_count = test_count
-		@lunch_average = test_average
-	  when 3
-	    @dinner_count = test_count
-		@dinner_average = test_average
-	  when 4
-	    @bedtime_count = test_count
-		@bedtime_average = test_average
+    case test_type_id
+    when 1
+      @breakfast_count = test_count
+    @breakfast_average = test_average
+    when 2
+      @lunch_count = test_count
+    @lunch_average = test_average
+    when 3
+      @dinner_count = test_count
+    @dinner_average = test_average
+    when 4
+      @bedtime_count = test_count
+    @bedtime_average = test_average
       end
     end
-
+=end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @blood_tests }
@@ -38,7 +55,7 @@ class BloodTestsController < ApplicationController
   # GET /blood_tests/new.xml
   def new
     @blood_test = BloodTest.new
-	@blood_test.test_date = Date.today
+  @blood_test.test_date = Date.today
 
     respond_to do |format|
       format.html # new.html.erb
