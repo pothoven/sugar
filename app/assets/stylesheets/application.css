@@ -1,3 +1,8 @@
+/*
+*= require_self
+*= require_tree .
+*/
+
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
@@ -65,7 +70,7 @@ a.icon:hover {
 	-o-border-radius: 8px;
     -khtml-border-radius: 8px;
 	border-radius: 8px;
-	border-color: #white;
+	border-color: white;
 	border-style: solid;
 	background-color: white;
 }

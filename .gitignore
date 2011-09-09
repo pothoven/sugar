@@ -11,4 +11,6 @@ db/schema.rb
 db/*.sqlite3
 .idea/*
 *.esproj/**/*
-public/images/prospects
+app/assets/images/prospects
+public/assets/images/prospects
+.sass-cache/
