@@ -1,5 +1,9 @@
 //= require jquery
 //= require jquery_ujs
+//= require highcharts
+//= require jquery.mobile-1.0b3
+//= require jquery.mousewheel
+//= require jquery.mobile.datebox
 //= require_self
 //= require_tree .
 
