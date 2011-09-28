@@ -1,3 +1,12 @@
+# == Schema Information
+# Schema version: 20110927134344
+#
+# Table name: test_types
+#
+#  id   :integer         not null, primary key
+#  name :string(255)
+#
+
 class TestType < ActiveRecord::Base
   acts_as_enumerated
 

@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20110927134344
+#
+# Table name: blood_tests
+#
+#  id           :integer         not null, primary key
+#  test_date    :date
+#  test_type_id :integer
+#  result       :integer
+#  note         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 class BloodTest < ActiveRecord::Base
 
   belongs_to :test_type
