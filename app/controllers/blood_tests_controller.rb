@@ -7,13 +7,17 @@ class BloodTestsController < ApplicationController
     @overall_count = BloodTest.recent.count
     @overall_average = BloodTest.recent.average(:result).round.to_i
     @breakfast_count = BloodTest.recent.breakfast.count
-    @breakfast_average = BloodTest.recent.breakfast.average(:result).round.to_i
+    @breakfast_average = BloodTest.recent.breakfast.average(:result)
+    @breakfast_average = @breakfast_average.round.to_i unless @breakfast_average.nil?
     @lunch_count = BloodTest.recent.lunch.count
-    @lunch_average = BloodTest.recent.lunch.average(:result).round.to_i
+    @lunch_average = BloodTest.recent.lunch.average(:result)
+    @lunch_average = @lunch_average.round.to_i unless @lunch_average.nil?
     @dinner_count = BloodTest.recent.dinner.count
-    @dinner_average = BloodTest.recent.dinner.average(:result).round.to_i
+    @dinner_average = BloodTest.recent.dinner.average(:result)
+    @dinner_average = @dinner_average.round.to_i unless @dinner_average.nil?
     @bedtime_count = BloodTest.recent.bedtime.count
-    @bedtime_average = BloodTest.recent.bedtime.average(:result).round.to_i
+    @bedtime_average = BloodTest.recent.bedtime.average(:result)
+    @bedtime_average = @bedtime_average.round.to_i unless @bedtime_average.nil?
 
 =begin
     # the following block of code will compute all the averages
