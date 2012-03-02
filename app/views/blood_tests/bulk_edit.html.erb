@@ -1,0 +1,55 @@
+<div data-role="page">
+  <div data-role="header">
+	<br style="clear: both;" />	
+	<h1>Bulk Edit Tests</h1>
+	<%= link_to 'Home', home_path, "data-icon" => "home", "class" => "ui-btn-left", "data-direction" => "reverse" %>
+  </div>
+  
+  <div data-role="content" data-theme="d">
+	  <ul data-role="listview">
+		<li data-role="divider" role="heading" data-theme="a">Recent Tests</li>
+		<li data-role="divider" role="heading" data-theme="b">
+		  <div class="ui-grid-d">
+			<div class="ui-block-a" style="text-align: left;">date</div>
+			<div class="ui-block-b" style="text-align: center;"><%= image_tag 'meal.png', :height => 32, :alt => 'breakfast', :title => 'breakfast' %></div>
+			<div class="ui-block-c" style="text-align: center;"><%= image_tag 'meal.png', :height => 32, :alt => 'lunch', :title => 'lunch' %></div>
+			<div class="ui-block-d" style="text-align: center;"><%= image_tag 'meal.png', :height => 32, :alt => 'dinner', :title => 'dinner' %></div>
+			<div class="ui-block-e" style="text-align: center;"><%= image_tag 'bedtime.png', :height => 32, :alt => 'bedtime', :title => 'bedtime' %></div>
+		  </div>
+		</li>
+
+		<% (@blood_tests.first.test_date .. Date.today).each do |test_date| -%>
+		<li data-theme="d">
+		  <div class="ui-grid-d">
+			<div class="ui-block-a" style="text-align: left;"><%= "#{test_date.month}/#{test_date.day}/#{test_date.year}" %></div>
+			<div class="ui-block-b" style="text-align: center;">
+			  <% blood_test = @blood_tests.select{ |blood_test| blood_test.test_date == test_date && blood_test.test_type_id == 1 }.first -%>
+			  <div id="<%= "#{test_date.strftime("%m-%d-%Y")}_1" %>">
+			  <%= render "inline_form", :blood_test => blood_test || BloodTest.new(:test_type_id => 1, :test_date => test_date) %>
+			  </div>
+            </div>
+			<div class="ui-block-c" style="text-align: center;">
+			  <% blood_test = @blood_tests.select{ |blood_test| blood_test.test_date == test_date && blood_test.test_type_id == 2 }.first -%>
+			  <div id="<%= "#{test_date.strftime("%m-%d-%Y")}_2" %>">
+			  <%= render "inline_form", :blood_test => blood_test || BloodTest.new(:test_type_id => 2, :test_date => test_date) %>
+			  </div>
+            </div>
+			<div class="ui-block-d" style="text-align: center;">
+			  <% blood_test = @blood_tests.select{ |blood_test| blood_test.test_date == test_date && blood_test.test_type_id == 3 }.first -%>
+			  <div id="<%= "#{test_date.strftime("%m-%d-%Y")}_3" %>">
+			  <%= render "inline_form", :blood_test => blood_test || BloodTest.new(:test_type_id => 3, :test_date => test_date) %>
+			  </div>
+            </div>
+			<div class="ui-block-e" style="text-align: center;">
+			  <% blood_test = @blood_tests.select{ |blood_test| blood_test.test_date == test_date && blood_test.test_type_id == 4 }.first -%>
+			  <div id="<%= "#{test_date.strftime("%m-%d-%Y")}_4" %>">
+			  <%= render "inline_form", :blood_test => blood_test || BloodTest.new(:test_type_id => 4, :test_date => test_date) %>
+			  </div>
+            </div>
+	      </div>
+		</li>
+		<% end -%>
+	  </ul>
+	  <br style="clear: both;" />	
+  </div>
+</div>

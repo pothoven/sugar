@@ -1,5 +1,9 @@
 Sugar::Application.routes.draw do
-  resources :blood_tests
+  resources :blood_tests do
+    collection do
+      get 'bulk_edit'
+    end
+  end
   resources :charts
 
   match "home" => "home#index"

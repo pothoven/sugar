@@ -4,20 +4,20 @@ class BloodTestsController < ApplicationController
   def index
     @blood_tests = BloodTest.recent
 
-    @overall_count = BloodTest.recent.count
-    @overall_average = BloodTest.recent.average(:result).round.to_i
-    @breakfast_count = BloodTest.recent.breakfast.count
+    @overall_count     = BloodTest.recent.count
+    @overall_average   = BloodTest.recent.average(:result).round.to_i
+    @breakfast_count   = BloodTest.recent.breakfast.count
     @breakfast_average = BloodTest.recent.breakfast.average(:result)
     @breakfast_average = @breakfast_average.round.to_i unless @breakfast_average.nil?
-    @lunch_count = BloodTest.recent.lunch.count
-    @lunch_average = BloodTest.recent.lunch.average(:result)
-    @lunch_average = @lunch_average.round.to_i unless @lunch_average.nil?
-    @dinner_count = BloodTest.recent.dinner.count
-    @dinner_average = BloodTest.recent.dinner.average(:result)
-    @dinner_average = @dinner_average.round.to_i unless @dinner_average.nil?
-    @bedtime_count = BloodTest.recent.bedtime.count
-    @bedtime_average = BloodTest.recent.bedtime.average(:result)
-    @bedtime_average = @bedtime_average.round.to_i unless @bedtime_average.nil?
+    @lunch_count       = BloodTest.recent.lunch.count
+    @lunch_average     = BloodTest.recent.lunch.average(:result)
+    @lunch_average     = @lunch_average.round.to_i unless @lunch_average.nil?
+    @dinner_count      = BloodTest.recent.dinner.count
+    @dinner_average    = BloodTest.recent.dinner.average(:result)
+    @dinner_average    = @dinner_average.round.to_i unless @dinner_average.nil?
+    @bedtime_count     = BloodTest.recent.bedtime.count
+    @bedtime_average   = BloodTest.recent.bedtime.average(:result)
+    @bedtime_average   = @bedtime_average.round.to_i unless @bedtime_average.nil?
 
 =begin
     # the following block of code will compute all the averages
@@ -55,6 +55,10 @@ class BloodTestsController < ApplicationController
     end
   end
 
+  def bulk_edit
+    @blood_tests = BloodTest.recent
+  end
+
   # GET /blood_tests/new
   # GET /blood_tests/new.xml
   def new
@@ -81,9 +85,11 @@ class BloodTestsController < ApplicationController
       if @blood_test.save
         format.html { redirect_to(blood_tests_url, :notice => 'Blood test was successfully created.') }
         format.xml  { render :xml => @blood_test, :status => :created, :location => @blood_test }
+        format.js   { @success = true }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @blood_test.errors, :status => :unprocessable_entity }
+        format.js   { @success = false }
       end
     end
   end
@@ -97,9 +103,11 @@ class BloodTestsController < ApplicationController
       if @blood_test.update_attributes(params[:blood_test])
         format.html { redirect_to(blood_tests_url, :notice => 'Blood test was successfully updated.') }
         format.xml  { head :ok }
+        format.js   { @success = true }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @blood_test.errors, :status => :unprocessable_entity }
+        format.js   { @success = false }
       end
     end
   end
