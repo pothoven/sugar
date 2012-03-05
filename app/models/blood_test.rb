@@ -18,6 +18,7 @@ class BloodTest < ActiveRecord::Base
 
   validates_uniqueness_of :test_date, :scope => [:test_type_id]
   validates_presence_of :result
+  validates_numericality_of :result, :only_integer => true, :greater_then_or_equal_to => 0
   validates_presence_of :test_date
   validates_presence_of :test_type_id
 

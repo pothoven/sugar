@@ -1,0 +1,7 @@
+<% if @success -%>
+$('#<%= @blood_test.test_date.strftime("%m-%d-%Y") %>_<%= @blood_test.test_type_id %>').replaceWith('<div id="<%= "#{@blood_test.test_date.strftime("%m-%d-%Y")}_#{@blood_test.test_type_id}" %>"><%= escape_javascript render("inline_form", :blood_test => @blood_test) %></div>');
+$('#blood_test_result_<%= @blood_test.test_date.strftime("%m-%d-%Y") %>-<%= @blood_test.test_type_id %>').effect("highlight",{ color: "#F3F8E7" }, 2000);
+<% else -%>
+$('#blood_test_result_<%= @blood_test.test_date.strftime("%m-%d-%Y") %>-<%= @blood_test.test_type_id %>').effect("highlight",{ color: "#ff0000" }, 2000);
+$('#blood_test_result_<%= @blood_test.test_date.strftime("%m-%d-%Y") %>-<%= @blood_test.test_type_id %>').focus();
+<% end -%>

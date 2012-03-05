@@ -1,5 +1,5 @@
 <%= form_for blood_test, :remote => true do |f| -%>
 <%= f.hidden_field :test_date %>
 <%= f.hidden_field :test_type_id %>
-<%= f.number_field :result, :onchange => "$(this.form).trigger('submit.rails');", :class => "ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d #{'result-high' if blood_test.result.present? && blood_test.result >= 240}" %>
+<%= f.number_field :result, :id => "blood_test_result_#{blood_test.test_date.strftime("%m-%d-%Y")}-#{blood_test.test_type_id}", :onchange => "$(this.form).trigger('submit.rails');", :class => "ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d #{'result-high' if blood_test.result.present? && blood_test.result >= 240}" %>
 <% end -%>

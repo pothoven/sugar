@@ -1,6 +1,5 @@
 class BloodTestsController < ApplicationController
   # GET /blood_tests
-  # GET /blood_tests.xml
   def index
     @blood_tests = BloodTest.recent
 
@@ -51,7 +50,6 @@ class BloodTestsController < ApplicationController
 =end
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @blood_tests }
     end
   end
 
@@ -60,14 +58,12 @@ class BloodTestsController < ApplicationController
   end
 
   # GET /blood_tests/new
-  # GET /blood_tests/new.xml
   def new
     @blood_test = BloodTest.new
-  @blood_test.test_date = Date.today
+    @blood_test.test_date = Date.today
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @blood_test }
     end
   end
 
@@ -77,50 +73,60 @@ class BloodTestsController < ApplicationController
   end
 
   # POST /blood_tests
-  # POST /blood_tests.xml
   def create
     @blood_test = BloodTest.new(params[:blood_test])
 
     respond_to do |format|
       if @blood_test.save
         format.html { redirect_to(blood_tests_url, :notice => 'Blood test was successfully created.') }
-        format.xml  { render :xml => @blood_test, :status => :created, :location => @blood_test }
-        format.js   { @success = true }
+        format.js   {
+          @blood_test = @blood_test.reload
+          @success = true
+          render :action => "update"
+        }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @blood_test.errors, :status => :unprocessable_entity }
-        format.js   { @success = false }
+        format.js   {
+          @success = false
+          render :action => "update"
+        }
       end
     end
   end
 
   # PUT /blood_tests/1
-  # PUT /blood_tests/1.xml
   def update
     @blood_test = BloodTest.find(params[:id])
 
     respond_to do |format|
       if @blood_test.update_attributes(params[:blood_test])
         format.html { redirect_to(blood_tests_url, :notice => 'Blood test was successfully updated.') }
-        format.xml  { head :ok }
         format.js   { @success = true }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @blood_test.errors, :status => :unprocessable_entity }
-        format.js   { @success = false }
+        format.js   {
+          unless params[:blood_test][:result].present?
+            if @blood_test.destroy
+              @blood_test = BloodTest.new(@blood_test.attributes)
+              @success = true
+            else
+              @success = false
+            end
+          else
+            @success = false
+          end
+        }
       end
     end
   end
 
   # DELETE /blood_tests/1
-  # DELETE /blood_tests/1.xml
   def destroy
     @blood_test = BloodTest.find(params[:id])
     @blood_test.destroy
 
     respond_to do |format|
       format.html { redirect_to(blood_tests_url) }
-      format.xml  { head :ok }
     end
   end
 

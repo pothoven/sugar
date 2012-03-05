@@ -1,3 +1,0 @@
-<% if @success -%>
-$('#<%= @blood_test.test_date.strftime("%m-%d-%Y") %>_<%= @blood_test.test_type_id %>').replaceWith('<%= escape_javascript render("inline_form", :blood_test => @blood_test) %>');
-<% end -%>

@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require highcharts
 //= require jquery.mobile-1.0b3
 //= require jquery.mousewheel
