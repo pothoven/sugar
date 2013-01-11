@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '~> 3.1.10'
 gem 'jquery-rails'
 gem 'newrelic_rpm'
 
