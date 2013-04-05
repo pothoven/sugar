@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require highcharts
-//= require jquery.mobile-1.0b3
+//= require jquery.mobile-1.3.0
 //= require jquery.mousewheel
 //= require jquery.mobile.datebox
 //= require_self

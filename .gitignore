@@ -14,3 +14,6 @@ db/*.sqlite3
 app/assets/images/prospects
 public/assets/images/prospects
 .sass-cache/
+vendor/assets/.*
+vendor/assets/**/.*
+vendor/assets/**/**/.*
