@@ -4,6 +4,13 @@ class Chart
     dates = []
     today = Date.today
     start_date = today - duration.weeks
+    # in case we're way behind on testing, give last available data
+    if BloodTest.last.present?
+      last_test = BloodTest.last.test_date
+      if last_test < start_date
+        start_date = last_test - duration.weeks
+      end
+    end
     while start_date <= today do
       dates.push(start_date)
       start_date += 1.day
