@@ -6,9 +6,9 @@ gem 'rails', '~> 3.2.12'
 gem 'jquery-rails'
 gem 'power_enum'                           # replaces enumerations_mixin plugin
 gem 'newrelic_rpm'
+gem 'thin'
 
 group :development, :test do
-  gem 'thin'
   gem 'taps'
   gem 'awesome_print'
   gem 'better_errors'
