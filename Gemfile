@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 source 'http://gems.github.com'
 ruby "1.9.3"
 
-gem 'rails', '~> 3.2.12'
+gem 'rails', '~> 3.2'
 gem 'jquery-rails'
 gem 'power_enum'                           # replaces enumerations_mixin plugin
 gem 'newrelic_rpm'
